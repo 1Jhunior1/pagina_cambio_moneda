@@ -202,7 +202,7 @@ h2 {
   background: linear-gradient(180deg, #ffffff 0%, #f9fcff 100%);
   border-radius: 24px;
   padding: 48px 44px;
-  max-width: 520px;
+  max-width: 550px !important;
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 22px 55px rgba(0, 119, 200, 0.2);
