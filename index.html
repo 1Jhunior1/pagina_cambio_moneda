@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Envios Divisas - Calculadora y Comprobantes</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Font Awesome para íconos -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-papb+mTzERkpXJ5n2xVuSnFfDTg0PkHnmvPKWFi8x1o+OaBO1PFl7B5k9fNUI0lTjCEKHzv9iwWLPyi8z5bT0g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo"><a href="#">EnviosDivisas</a></div>
+      <nav class="nav-menu">
+        <a href="#calculadora">Calculadora</a>
+        <a href="#por-que-elegirnos">¿Por qué elegirnos?</a>
+        <a href="#datos-transferencia">Datos</a>
+        <a href="#mision-vision">Misión / Visión</a>
+        <a href="#sobre-nosotros">Sobre Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button id="menuToggle" class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Envía dinero fácil y rápido</h1>
+      <p>Transparencia, rapidez y el mejor tipo de cambio entre Chile y Bolivia.</p>
+      <a class="btn-primary" href="#calculadora">Cotiza tu envío</a>
+    </div>
+  </section>
+
+  <!-- CALCULADORA (PRINCIPAL) -->
+  <section id="calculadora" class="calculadora-section container">
+    <h2>Cotiza tu envío</h2>
+
+    <div class="calculadora">
+    <!-- agregando un id al monto que ingrse el usuario-->
+      <label for="monto">Monto en CLP</label>
+      <input id="monto" type="number" placeholder="Ej: 10000" min="10000" step="100" />
+
+      <p id="tipo-cambio-info" class="tipo-cambio-info" aria-live="polite"></p>
+      <div id="resultado" class="resultado" aria-live="polite"></div>
+
+      <div class="botones-row">
+        <!-- Subir comprobante (modal) -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="sacar_monto()">
+  Subir tus datos
+</button>
+
+        <!-- Enviar por WhatsApp -->
+        <button id="enviarWhatsAppBtn" class="btn-whatsapp" type="button" title="Enviar cotización por WhatsApp" disabled>
+          <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ ELEGIRNOS -->
+  <section id="por-que-elegirnos" class="por-que-elegirnos-section container">
+    <h2>¿Por qué elegir <span class="highlight">EnviosDivisas</span>?</h2>
+    <p class="llamativo">Rapidez, seguridad y un tipo de cambio justo para que tu dinero llegue sin sorpresas.</p>
+
+    <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <div class="beneficio-icon-container">
+          <img src="img/secure.svg" alt="Transferencias seguras" class="beneficio-icon" />
+          <i class="fas fa-shield-alt icon-hover"></i>
+        </div>
+        <h3>Transferencias seguras</h3>
+        <p>Proceso monitoreado y protegido en cada paso.</p>
+      </div>
+
+      <div class="beneficio-card">
+        <div class="beneficio-icon-container">
+          <img src="img/support.svg" alt="Soporte 24/7" class="beneficio-icon" />
+          <i class="fas fa-headset icon-hover"></i>
+        </div>
+        <h3>Soporte 24/7</h3>
+        <p>Atención personalizada por teléfono o WhatsApp.</p>
+      </div>
+
+      <div class="beneficio-card">
+        <div class="beneficio-icon-container">
+          <img src="img/no-commissions.svg" alt="Sin comisiones ocultas" class="beneficio-icon" />
+          <i class="fas fa-ban icon-hover"></i>
+        </div>
+        <h3>Sin comisiones ocultas</h3>
+        <p>Precios claros y transparentes desde el inicio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATOS DE TRANSFERENCIA -->
+  <section id="datos-transferencia" class="datos-transferencia-section container">
+    <h2>Datos para realizar tu transferencia</h2>
+    <div class="datos-grid">
+      <div class="datos-card">
+        <h3><i class="fas fa-university"></i> Información bancaria</h3>
+        <ul>
+          <li><strong>Nombre:</strong> EnviosDivisas Ltda.</li>
+          <li><strong>RUT / NIT:</strong> 123456789</li>
+          <li><strong>Banco:</strong> Banco Nacional</li>
+          <li><strong>Número de Cuenta:</strong> 987654321</li>
+        </ul>
+      </div>
+
+      <div class="datos-card">
+        <h3><i class="fas fa-file-upload"></i> Envío de comprobantes</h3>
+        <p>Envía tu comprobante por el botón <strong>Subir comprobante</strong> o abre WhatsApp con <strong>Enviar por WhatsApp</strong>.</p>
+        <p><a class="email-link" href="mailto:comprobantes@enviosdivisas.cl">comprobantes@enviosdivisas.cl</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISION / VISION -->
+  <section id="mision-vision" class="mision-vision-section container">
+    <h2>Nuestra Misión y Visión</h2>
+
+    <div class="mision-vision-grid">
+      <div class="mision-vision-card">
+        <i class="fas fa-bullseye icon-big"></i>
+        <h3>Misión</h3>
+        <p>Facilitar envíos entre Chile y Bolivia con confianza, rapidez y transparencia.</p>
+      </div>
+
+      <div class="mision-vision-card">
+        <i class="fas fa-eye icon-big"></i>
+        <h3>Visión</h3>
+        <p>Ser la plataforma de referencia en soluciones de envío y cambio en Sudamérica.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="sobre-nosotros" class="sobre-nosotros-section container">
+    <h2>Sobre <span class="highlight">Nosotros</span></h2>
+    <p class="llamativo">Equipo con +10 años de experiencia ayudando a familias y comercios.</p>
+    <p>Atendemos desde clientes del campo hasta empresas, con procesos simples y seguros.</p>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contacto container">
+    <h2>Contacto</h2>
+    <p>¿Dudas? Escríbenos por WhatsApp o correo.</p>
+    <a class="btn-whatsapp-link" id="linkWhatsApp" href="#" target="_blank">
+      <i class="fab fa-whatsapp"></i> Soporte WhatsApp
+    </a>
+    <p class="contacto-email">contacto@enviosdivisas.cl</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer container">
+    <div class="footer-content">
+      <div class="footer-section footer-about">
+        <h3>EnviosDivisas</h3>
+        <p>Tu socio confiable para envíos seguros entre Chile y Bolivia.</p>
+      </div>
+      <div class="footer-section footer-links">
+        <h4>Enlaces útiles</h4>
+        <ul>
+          <li><a href="#calculadora">Calculadora</a></li>
+          <li><a href="#por-que-elegirnos">¿Por qué elegirnos?</a></li>
+          <li><a href="#datos-transferencia">Datos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-section footer-contact">
+        <h4>Contáctanos</h4>
+        <p><i class="fas fa-phone"></i> +56 9 1234 5678</p>
+        <p><i class="fas fa-envelope"></i> contacto@enviosdivisas.cl</p>
+        <p><i class="fab fa-whatsapp"></i> WhatsApp disponible 24/7</p>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 Envios Divisas - Todos los derechos reservados</p>
+  </footer>
+
+<!-- Modal -- FORMULARIO DE ENVIO -->
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Formulario de Envio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+
+
+        <form class="row g-1">
+        <span class="badge rounded-pill bg-warning text-dark">Datos del Remitente</span>
+
+              <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Nombre Completo</label>
+            <input type="text" class="form-control" id="formGroupExampleInput">
+          </div>
+          <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Cedula de Identidad</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" >
+          </div>
+
+          <fieldset disabled>
+              <div class="mb-3">
+                <label for="disabledTextInput" class="form-label">Monto a Enviar</label>
+                <input type="text" id="disabledTextInput" class="form-control">
+              </div>
+          </fieldset>
+
+           <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Comprobante de Envio</label> 
+              <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile01">
+              </div>
+          </div>
+        
+
+          <span class="badge rounded-pill bg-success">Datos del Destinatario</span>
+
+          <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Nombre Completo</label>
+            <input type="text" class="form-control" id="formGroupExampleInput">
+          </div>
+
+<div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Tipo de Envio</label>
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                     QR Simple
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      
+                           <div class="mb-3">
+                            <label for="disabledTextInput" class="form-label">adjuntar QR</label> 
+                              <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile01">
+                              </div>
+                          </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                     Transferencia Simple
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Numero de Cuenta</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" >
+                      </div>
+                    <div class="mb-3">
+                         <label for="formGroupExampleInput2" class="form-label">Seleciione el Banco</label>
+                        <select class="form-select" aria-label="Default select example">
+                          <option selected>--------------</option>
+                          <option value="1">Banco Uncion</option>
+                          <option value="2">Banco Bisa</option>
+                          <option value="3">BCP</option>
+                          <option value="4">Banco Mutual</option>
+                          <option value="5">Banco Ncional de Bolivia</option>
+                          <option value="6">Banco Sol</option>
+
+                        </select>
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                
+              </div>
+</div>
+   
+        </form>
+</div>
+
+
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">ENVIAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div id="modalComprobante" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+  <div class="modal-contenido">
+    <button id="cerrarModal" class="cerrar" aria-label="Cerrar modal">&times;</button>
+    <h3 id="modalTitle">Subir comprobante</h3>
+    <form id="formComprobante" class="form-comprobante" enctype="multipart/form-data" novalidate>
+      <label for="nombreEnvio">Nombre del que envía *</label>
+      <input type="text" id="nombreEnvio" name="nombreEnvio" required />
+
+      <label for="nombreRecibe">Nombre del que recibe *</label>
+      <input type="text" id="nombreRecibe" name="nombreRecibe" required />
+
+      <label for="montoModal">Monto (CLP) *</label>
+      <input type="number" id="montoModal" name="montoModal" min="10000" step="0.01" required />
+
+      <label for="ci">CI *</label>
+      <input type="text" id="ci" name="ci" required />
+
+      <label for="bancoDestino">Banco de destino *</label>
+      <input type="text" id="bancoDestino" name="bancoDestino" required />
+
+      <label for="tipoCuenta">Tipo de cuenta *</label>
+      <select id="tipoCuenta" name="tipoCuenta" required>
+        <option value="">-- Seleccione --</option>
+        <option value="Corriente">Corriente</option>
+        <option value="Ahorros">Ahorros</option>
+        <option value="Otra">Otra</option>
+      </select>
+
+      <label for="archivoQR">Foto QR o número de cuenta (opcional)</label>
+      <input type="file" id="archivoQR" name="archivoQR" accept=".jpg,.jpeg,.png,.webp" />
+
+      <label for="archivoComprobante">Adjuntar comprobante (JPG, PNG, PDF máximo 10MB) *</label>
+      <input type="file" id="archivoComprobante" name="archivoComprobante" accept=".jpg,.jpeg,.png,.webp,.pdf" required />
+
+      <div id="progresoWrapper" class="progreso" style="display:none;">
+        <div id="progresoBar" class="progreso-bar"></div>
+      </div>
+      <p id="mensajeEnvio" class="mensaje-envio"></p>
+      <div class="modal-actions">
+        <button type="submit" id="btnEnviarComprobante" class="btn-send">Enviar</button>
+        <button type="button" id="btnCancelar" class="btn-cancel">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  <!-- BURBUJA FLOTANTE WHATSAPP -->
+  <a
+    id="whatsappBubble"
+    class="whatsapp-float"
+    href="#"
+    target="_blank"
+    aria-label="Contactar por WhatsApp"
+  >
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      fill="#fff"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill="#25D366"
+        d="M12.041 2C6.478 2 2 6.506 2 12.054c0 2.035.592 3.915 1.617 5.506L2 22l4.6-1.479A9.99 9.99 0 0012.041 22C17.604 22 22 17.494 22 11.946 22 6.399 17.604 2 12.041 2z"
+      />
+      <path
+        fill="#fff"
+        d="M17.31 14.08c-.23-.115-1.358-.67-1.57-.745-.212-.075-.366-.114-.52.114-.152.229-.585.745-.717.9-.13.152-.26.17-.49.056-.23-.114-1-0.37-1.9-1.17-.702-.627-1.176-1.402-1.313-1.632-.137-.229-.015-.353.104-.468.106-.103.237-.268.357-.403.12-.136.16-.229.24-.38.08-.152 0-.285-.115-.4-.115-.114-.52-1.265-.717-1.732-.19-.45-.385-.387-.52-.395l-.444-.007c-.152 0-.4.056-.61.285-.212.228-.81.79-.81 1.927 0 1.136.829 2.235.95 2.388.123.152 1.64 2.5 3.977 3.507 2.338 1.005 2.338.67 2.76.627.424-.045 1.356-.55 1.548-1.084.19-.534.19-.992.132-1.085-.056-.095-.207-.152-.44-.267z"
+      />
+    </svg>
+  </a>
+
+  <!-- JS -->
+  <script src="js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

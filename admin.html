@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - Login y Tipo de Cambio</title>
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b);
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #14253d;
+      padding: 40px 50px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      width: 100%;
+      max-width: 480px; /* Más ancho para mejor visualización */
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+    .container:hover {
+      box-shadow: 0 12px 40px rgba(0, 123, 255, 0.8);
+    }
+
+    h1 {
+      margin-bottom: 28px;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #61dafb;
+      text-shadow: 0 2px 6px rgba(97, 218, 251, 0.6);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="number"] {
+      width: 100%;
+      padding: 16px 18px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #14253d;
+      outline-offset: 2px;
+      outline-color: #61dafb;
+      transition: outline-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="number"]:focus {
+      outline-color: #21a1f1;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px 0;
+      margin-bottom: 14px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      background: linear-gradient(90deg, #61dafb, #21a1f1);
+      color: #14253d;
+      box-shadow: 0 6px 16px rgba(33, 161, 241, 0.5);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #21a1f1, #0d8de0);
+      box-shadow: 0 8px 24px rgba(33, 161, 241, 0.8);
+    }
+    button:active {
+      transform: translateY(2px);
+      box-shadow: 0 4px 12px rgba(33, 161, 241, 0.6);
+    }
+
+    #logoutBtn {
+      background: #e74c3c;
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(231, 76, 60, 0.5);
+    }
+    #logoutBtn:hover {
+      background: #c0392b;
+      box-shadow: 0 8px 24px rgba(192, 57, 43, 0.8);
+    }
+
+    #msg, #mensaje {
+      font-weight: 700;
+      min-height: 26px;
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    #msg {
+      color: #f44336;
+    }
+    #mensaje.success {
+      color: #2ecc71;
+      text-shadow: 0 1px 2px rgba(46, 204, 113, 0.7);
+    }
+    #mensaje.error {
+      color: #f44336;
+    }
+
+    /* Responsive para móviles */
+    @media (max-width: 600px) {
+      .container {
+        max-width: 100%;
+        padding: 30px 25px;
+        margin: 10px;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+      input[type="text"],
+      input[type="password"],
+      input[type="number"] {
+        font-size: 1rem;
+        padding: 14px 12px;
+      }
+      button {
+        font-size: 1rem;
+        padding: 14px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="login-container">
+    <h1>Login Admin</h1>
+    <input type="text" id="user" placeholder="Usuario" autocomplete="username" />
+    <input type="password" id="pass" placeholder="Contraseña" autocomplete="current-password" />
+    <button id="loginBtn" type="button">Ingresar</button>
+    <p id="msg"></p>
+  </div>
+
+  <div class="container" id="admin-panel" style="display:none;">
+    <h1>Actualizar Tipo de Cambio</h1>
+    <input
+      type="number"
+      id="nuevoTipoCambio"
+      min="1"
+      placeholder="Ejemplo: 180"
+      autocomplete="off"
+    />
+    <button id="actualizarBtn" type="button">Actualizar</button>
+    <button id="logoutBtn" type="button">Cerrar sesión</button>
+    <p id="mensaje"></p>
+  </div>
+
+  <script>
+    const USER = 'admin';
+    const PASS = '123456';
+
+    const loginContainer = document.getElementById('login-container');
+    const adminPanel = document.getElementById('admin-panel');
+    const msg = document.getElementById('msg');
+    const mensaje = document.getElementById('mensaje');
+
+    // Mostrar panel si ya logueado
+    if (sessionStorage.getItem('loggedIn') === 'true') {
+      loginContainer.style.display = 'none';
+      adminPanel.style.display = 'block';
+    }
+
+    document.getElementById('loginBtn').onclick = () => {
+      const user = document.getElementById('user').value.trim();
+      const pass = document.getElementById('pass').value.trim();
+      if (user === USER && pass === PASS) {
+        sessionStorage.setItem('loggedIn', 'true');
+        loginContainer.style.display = 'none';
+        adminPanel.style.display = 'block';
+        msg.textContent = '';
+      } else {
+        msg.textContent = 'Usuario o contraseña incorrectos';
+      }
+    };
+
+    document.getElementById('logoutBtn').onclick = () => {
+      sessionStorage.removeItem('loggedIn');
+      adminPanel.style.display = 'none';
+      loginContainer.style.display = 'block';
+      mensaje.textContent = '';
+    };
+
+    document.getElementById('actualizarBtn').onclick = async () => {
+      const nuevoTipoCambio = parseFloat(document.getElementById('nuevoTipoCambio').value);
+      if (!nuevoTipoCambio || nuevoTipoCambio <= 0) {
+        mensaje.className = 'error';
+        mensaje.textContent = 'Ingrese un valor válido mayor a 0';
+        return;
+      }
+      try {
+        const authHeader = 'Basic ' + btoa(`${USER}:${PASS}`);
+        const res = await fetch('http://localhost:3000/api/tipo-cambio', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': authHeader,
+          },
+          body: JSON.stringify({ tipoDeCambioPor10k: nuevoTipoCambio }),
+        });
+        const data = await res.json();
+        if (res.ok) {
+          mensaje.className = 'success';
+          mensaje.textContent = `Tipo de cambio actualizado a ${data.tipoDeCambioPor10k}`;
+        } else {
+          mensaje.className = 'error';
+          mensaje.textContent = data.error || 'Error al actualizar';
+        }
+      } catch (error) {
+        mensaje.className = 'error';
+        mensaje.textContent = 'Error en la conexión con el servidor';
+      }
+    };
+  </script>
+</body>
+</html>
